@@ -11,7 +11,6 @@ namespace Domain.Mapping
         {
             Id(x => x.Id);
             Map(x => x.Nome);
-            Map(x => x.Descricao);
         }
     }
 }
