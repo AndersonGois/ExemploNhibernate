@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{333C35AC-6EF6-4A5A-9D03-1D9CC3DBABED}</ProjectGuid>
+    <ProjectGuid>{EDF04E70-1D76-4103-B506-03B8F57A4DAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>ExemploTeste</RootNamespace>
+    <AssemblyName>ExemploTeste</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,8 +48,15 @@
     <Reference Include="NHibernate.LambdaExtensions">
       <HintPath>..\Lib\NHibernate.LambdaExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,15 +64,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\TipoSexo.cs" />
-    <Compile Include="Mappings\ClienteMap.cs" />
-    <Compile Include="Entities\Cliente.cs" />
-    <Compile Include="Interfaces\IAggegateRoot.cs" />
-    <Compile Include="Mappings\TipoSexoMap.cs" />
+    <Compile Include="BaseTest\DataSession.cs" />
+    <Compile Include="Infrastructure\CriarBancoDeDados.cs" />
+    <Compile Include="BaseTest\PersistenceTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="Repository\Clientes.cs" />
-    <Compile Include="Repository\TipoSexos.cs" />
+    <Compile Include="ReposiroryTest.cs" />
+    <Compile Include="Teste.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{333c35ac-6ef6-4a5a-9d03-1d9cc3dbabed}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

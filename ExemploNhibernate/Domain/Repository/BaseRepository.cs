@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using AGR.Domain.Entities;
-using AGR.Domain.Interfaces;
+using Domain.Entities;
+using Domain.Interfaces;
 using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 
-namespace AGR.Domain.Repository
+namespace Domain.Repository
 {
     public abstract class BaseRepository
     {
