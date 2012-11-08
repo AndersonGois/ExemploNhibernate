@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Domain.Mappings
+using Domain.Entities;
+using FluentNHibernate.Mapping;
+
+namespace Domain.Mapping
 {
-    class ClienteMap
+    public sealed class ClienteMap : ClassMap<Cliente>
     {
+        public ClienteMap()
+        {
+            Id(x => x.Id);
+            Map(x => x.Nome);
+        }
     }
 }
