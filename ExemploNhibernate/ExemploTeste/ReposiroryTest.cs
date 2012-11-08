@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Repository;
 using NUnit.Framework;
 
@@ -12,29 +8,28 @@ namespace ExemploTeste
     public class ReposiroryTest
     {
         private Cliente _cliente;
-        private Clientes _clientes;
 
         [SetUp]
         public void a_Criar_clientes()
         {
-            _clientes = new Clientes();
-            _cliente = new Cliente { Nome = "anderson" };
-            _clientes.Salvar(_cliente);
+            _cliente = new Cliente { Nome = "Rejane", Sexo = new TipoSexos().Obter<TipoSexo>(2) };
+            new Clientes().Salvar(_cliente);
         }
 
 
         [Test]
         public void construtor()
         {
-            var nes = new Clientes();
+            Assert.IsNotNull(new Clientes());
         }
 
         [Test]
         public void b_Alterar_cliente()
         {
-            var cliente = _clientes.Obter(_cliente.Id);
+            var cli = new Clientes();
+            var cliente = cli.Obter(_cliente.Id);
             cliente.Nome = "teste";
-            _clientes.Salvar(cliente);
+            cli.Salvar(cliente);
 
             Assert.AreEqual(cliente.Id, _cliente.Id);
         }
@@ -42,22 +37,13 @@ namespace ExemploTeste
         [Test]
         public void c_Obter_clientes()
         {
-            var todos = _clientes.Todos();
-            Assert.NotNull(todos);
-        }
-
-        [Test]
-        public void DeletarTiposexo()
-        {
-            var tipoSexo = new TipoSexos();
-            var tipo = tipoSexo.Obter<TipoSexo>(1);
-            tipoSexo.Deletar(tipo);
+            Assert.NotNull(new Clientes().Todos());
         }
 
         [TearDown]
         public void deletar_cliente()
         {
-            _clientes.Deletar(_cliente);
+            new Clientes().Deletar(_cliente);
         }
     }
 }

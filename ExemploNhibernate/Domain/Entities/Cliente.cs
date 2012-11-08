@@ -7,5 +7,6 @@ namespace Domain.Entities
     {
         public virtual string Nome { get; set; }
         public virtual int Id { get; set; }
+        public virtual TipoSexo Sexo { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace Domain.Mapping
         {
             Id(x => x.Id);
             Map(x => x.Nome);
+            References(x => x.Sexo);
         }
     }
 }
